@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/AWS-APP-STUDY/sw.js', { scope: '/AWS-APP-STUDY/' })})}
