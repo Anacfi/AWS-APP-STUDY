@@ -1,0 +1,269 @@
+.profile {
+  padding: calc(20px + var(--safe-top)) 16px calc(32px + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--cream-soft);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.header h1 {
+  font-size: 20px;
+}
+
+.studyRow {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--amber);
+  background: var(--amber-12);
+  border: 1px solid rgba(224, 169, 106, 0.4);
+}
+
+.studyRow h2 {
+  font-size: 21px;
+}
+
+.studySubtitle {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--cream-soft);
+}
+
+.sectionLabel {
+  margin: 24px 0 10px;
+  font-size: 11px;
+  color: var(--cream-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.certList {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.certRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.certRowSelected {
+  border-color: var(--amber);
+  background: var(--amber-12);
+}
+
+.radio {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--bg-deep);
+}
+
+.radioSelected {
+  background: var(--amber);
+  border-color: var(--amber);
+}
+
+.certInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.certName {
+  font-size: 14.5px;
+  color: var(--cream-soft);
+}
+
+.certRowSelected .certName {
+  color: var(--cream);
+}
+
+.certMeta {
+  font-size: 11.5px;
+  color: var(--cream-dim);
+}
+
+.certCode {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  padding: 4px 8px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  color: var(--cream-dim);
+}
+
+.certRowSelected .certCode {
+  border-color: var(--amber-28);
+  color: var(--amber);
+}
+
+.examCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+
+.calendar {
+  flex-shrink: 0;
+  width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.calendarMonth {
+  width: 100%;
+  text-align: center;
+  padding: 3px 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--bg-deep);
+  background: var(--amber);
+}
+
+.calendarDay {
+  padding: 4px 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--cream);
+}
+
+.examInfo {
+  flex: 1;
+}
+
+.examDate {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--cream);
+}
+
+.examDays {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  color: var(--cream-soft);
+}
+
+.dateInput {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.editButton {
+  flex-shrink: 0;
+  background: none;
+  border: 1px solid var(--amber-28);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 12.5px;
+  color: var(--amber);
+  cursor: pointer;
+}
+
+.hint {
+  margin: 10px 2px 0;
+  font-size: 11.5px;
+  color: var(--cream-dim);
+}
+
+.paceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.paceCard {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.paceLabel {
+  font-size: 12px;
+  color: var(--cream-soft);
+}
+
+.paceValue {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--cream);
+  cursor: pointer;
+}
+
+.paceInput {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--amber-28);
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--cream);
+  padding: 0 0 2px;
+}

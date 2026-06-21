@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Secrets (Supabase keys, etc.) — copy .env.example instead
+.env
+
 # Design mockups (heavy reference files, kept local only)
 design/
 

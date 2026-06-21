@@ -5,15 +5,16 @@
   --cream-soft: #9c9183;
   --cream-dim: #6a6155;
   --amber: #e0a96a;
-  --amber-light: #f0c896;
   --amber-12: rgba(224, 169, 106, 0.12);
   --amber-28: rgba(224, 169, 106, 0.28);
   --line: rgba(236, 230, 220, 0.12);
   --line-soft: rgba(236, 230, 220, 0.06);
 
-  --font-display: 'Hanken Grotesk', system-ui, sans-serif;
-  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 
   font: 16px/145% var(--font-body);
   color-scheme: dark;
@@ -35,5 +36,6 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display);
+  font-weight: 400;
   margin: 0;
 }

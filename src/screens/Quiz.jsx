@@ -1,10 +1,23 @@
-import { useState } from 'react'
-import { questions } from '../data/sampleQuestions'
+import { useEffect, useState } from 'react'
+import { getQuestions } from '../lib/queries'
 import styles from './Quiz.module.css'
 
 export default function Quiz({ onBack }) {
+  const [questions, setQuestions] = useState(null)
+  const [error, setError] = useState(null)
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState(null)
+
+  useEffect(() => {
+    getQuestions().then(setQuestions).catch(setError)
+  }, [])
+
+  if (error) {
+    return <main className={styles.quiz}>No se pudo cargar el cuestionario. Intenta de nuevo más tarde.</main>
+  }
+  if (!questions) {
+    return <main className={styles.quiz}>Cargando…</main>
+  }
 
   const total = questions.length
   const finished = index >= total

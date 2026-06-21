@@ -1,11 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProgressBar from '../components/ProgressBar'
-import { flashcards } from '../data/sampleFlashcards'
+import { getFlashcards } from '../lib/queries'
 import styles from './Flashcards.module.css'
 
 export default function Flashcards({ onBack }) {
+  const [flashcards, setFlashcards] = useState(null)
+  const [error, setError] = useState(null)
   const [index, setIndex] = useState(0)
   const [flipped, setFlipped] = useState(false)
+
+  useEffect(() => {
+    getFlashcards().then(setFlashcards).catch(setError)
+  }, [])
+
+  if (error) {
+    return <main className={styles.flashcards}>No se pudieron cargar las tarjetas. Intenta de nuevo más tarde.</main>
+  }
+  if (!flashcards) {
+    return <main className={styles.flashcards}>Cargando…</main>
+  }
 
   const total = flashcards.length
   const finished = index >= total
