@@ -1,0 +1,159 @@
+.flashcards {
+  min-height: 100dvh;
+  padding: 20px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.flashcardsHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--cream-soft);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.flashcardsHeader h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.flashcardsCount {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--cream-soft);
+}
+
+.card {
+  flex: 1;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  padding: 24px;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  background: rgba(236, 230, 220, 0.03);
+  color: var(--cream);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardBadge {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 9px;
+  border: 1px solid var(--amber-28);
+  color: var(--amber);
+}
+
+.cardSide {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--cream-soft);
+}
+
+.cardText {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cardHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 13px;
+  color: var(--cream-soft);
+}
+
+.hintIcon {
+  font-size: 14px;
+}
+
+.cardActions {
+  display: flex;
+  gap: 12px;
+}
+
+.secondaryButton,
+.primaryButton {
+  flex: 1;
+  padding: 16px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--cream);
+}
+
+.primaryButton {
+  border: none;
+  background: var(--amber);
+  color: var(--bg-deep);
+}
+
+.flashcardsDone {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.flashcardsDone h2 {
+  font-size: 22px;
+}
+
+.flashcardsDone p {
+  color: var(--cream-soft);
+  margin: 0 0 16px;
+}
+
+.flashcardsDone .primaryButton {
+  flex: none;
+  padding: 16px 32px;
+}
+
+.textButton {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: var(--cream-soft);
+  font-family: var(--font-body);
+  font-size: 14px;
+  cursor: pointer;
+}

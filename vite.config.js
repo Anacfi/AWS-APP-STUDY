@@ -17,8 +17,8 @@ export default defineConfig({
         start_url: '/AWS-APP-STUDY/',
         scope: '/AWS-APP-STUDY/',
         display: 'standalone',
-        background_color: '#0f1117',
-        theme_color: '#FF9900',
+        background_color: '#17130d',
+        theme_color: '#17130d',
         icons: [
           { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },

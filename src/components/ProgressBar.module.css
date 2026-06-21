@@ -1,0 +1,17 @@
+.barTrack {
+  height: 6px;
+  border-radius: 4px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.barTrack.thin {
+  height: 3px;
+  border-radius: 2px;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--amber);
+}
