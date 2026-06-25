@@ -1,8 +1,15 @@
--- Temario: secciones (categorías) y sus lecciones
+-- Temario: secciones (categorías) y sus lecciones.
+-- cert_code liga el temario a una certificación específica (ej.
+-- 'SAA-C03', 'CLF-C02'); cada certificación tiene su propio set de
+-- categorías independiente.
+-- NOTA: categories/lessons/concepts ya no las usa la app (se
+-- simplificó a solo flashcards + cuestionario por tema). Se dejan
+-- aquí sin usar por si se retoma el temario más adelante.
 create table categories (
   id text primary key,
   label text not null,
   short text not null,
+  cert_code text not null,
   topics_completed int not null default 0,
   topics_total int not null default 0,
   percent int not null default 0,
@@ -15,6 +22,18 @@ create table lessons (
   title text not null,
   minutes int not null,
   status text not null check (status in ('completed', 'in-progress', 'pending')),
+  order_index int not null
+);
+
+-- Conceptos: subdivisión de cada lección en temas puntuales para
+-- estudiar y marcar como leídos. "content" guarda el texto de las
+-- notas/PDF de estudio una vez subidas.
+create table concepts (
+  id bigint generated always as identity primary key,
+  lesson_id bigint not null references lessons(id) on delete cascade,
+  title text not null,
+  content text,
+  completed boolean not null default false,
   order_index int not null
 );
 
@@ -34,6 +53,7 @@ create table questions (
   options jsonb not null,
   correct int not null,
   explanation text not null,
+  category text not null,
   created_at timestamptz not null default now()
 );
 
@@ -57,12 +77,15 @@ create table profile (
 -- (usada por el scheduler) ignora RLS por completo.
 alter table categories enable row level security;
 alter table lessons enable row level security;
+alter table concepts enable row level security;
 alter table flashcards enable row level security;
 alter table questions enable row level security;
 alter table profile enable row level security;
 
 create policy "Public read categories" on categories for select using (true);
 create policy "Public read lessons" on lessons for select using (true);
+create policy "Public read concepts" on concepts for select using (true);
+create policy "Public update concepts" on concepts for update using (true);
 create policy "Public read flashcards" on flashcards for select using (true);
 create policy "Public read questions" on questions for select using (true);
 create policy "Public read profile" on profile for select using (true);
@@ -74,6 +97,7 @@ create policy "Public update profile" on profile for update using (true);
 -- key no necesita esto: ya tiene acceso completo por defecto.
 grant select on categories to anon, authenticated;
 grant select on lessons to anon, authenticated;
+grant select, update on concepts to anon, authenticated;
 grant select on flashcards to anon, authenticated;
 grant select on questions to anon, authenticated;
 grant select, update on profile to anon, authenticated;

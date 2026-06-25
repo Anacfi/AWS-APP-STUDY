@@ -1,24 +1,5 @@
 import { supabase } from './supabaseClient'
 
-export async function getCategories() {
-  const { data, error } = await supabase
-    .from('categories')
-    .select('*, lessons(*)')
-    .order('order_index')
-    .order('order_index', { foreignTable: 'lessons' })
-  if (error) throw error
-
-  return data.map((c) => ({
-    id: c.id,
-    label: c.label,
-    short: c.short,
-    topicsCompleted: c.topics_completed,
-    topicsTotal: c.topics_total,
-    percent: c.percent,
-    lessons: c.lessons.map((l) => ({ title: l.title, minutes: l.minutes, status: l.status })),
-  }))
-}
-
 export async function getFlashcards() {
   const { data, error } = await supabase.from('flashcards').select('*').order('id')
   if (error) throw error

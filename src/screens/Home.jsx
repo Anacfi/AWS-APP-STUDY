@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import ProgressBar from '../components/ProgressBar'
-import { cert, continueItem, streakDays } from '../data/sampleProgress'
+import { cert, streakDays } from '../data/sampleProgress'
 import { certifications } from '../data/certifications'
-import { getCategories, getFlashcards, getProfile } from '../lib/queries'
+import { getFlashcards, getQuestions, getProfile } from '../lib/queries'
 import styles from './Home.module.css'
 
 const flashcardsReviewedToday = 0
@@ -46,23 +46,25 @@ function CircularProgress({ percent, size = 116, stroke = 9 }) {
 }
 
 export default function Home({ onNavigate }) {
-  const [categories, setCategories] = useState(null)
   const [flashcardsCount, setFlashcardsCount] = useState(null)
+  const [questionsCount, setQuestionsCount] = useState(null)
   const [profile, setProfile] = useState(null)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    getCategories().then(setCategories).catch(setError)
+    getProfile().then(setProfile).catch(setError)
     getFlashcards()
       .then((data) => setFlashcardsCount(data.length))
       .catch(setError)
-    getProfile().then(setProfile).catch(setError)
+    getQuestions()
+      .then((data) => setQuestionsCount(data.length))
+      .catch(setError)
   }, [])
 
   if (error) {
     return <main className={styles.home}>No se pudo cargar la información. Intenta de nuevo más tarde.</main>
   }
-  if (!categories || flashcardsCount === null || !profile) {
+  if (flashcardsCount === null || questionsCount === null || !profile) {
     return <main className={styles.home}>Cargando…</main>
   }
 
@@ -106,11 +108,11 @@ export default function Home({ onNavigate }) {
 
       <button className={styles.continueCard} onClick={() => onNavigate('quiz')}>
         <div className={styles.continueTop}>
-          <span>Continuar · {continueItem.category}</span>
-          <span className={styles.continuePercent}>{continueItem.percent}%</span>
+          <span>Cuestionario</span>
+          <span>{questionsCount} preguntas</span>
         </div>
-        <h3>{continueItem.topic}</h3>
-        <ProgressBar percent={continueItem.percent} />
+        <h3>Pon a prueba lo que sabes</h3>
+        <ProgressBar percent={cert.percent} />
       </button>
 
       <button className={`${styles.continueCard} ${styles.flashcardsCard}`} onClick={() => onNavigate('flashcards')}>
@@ -126,27 +128,6 @@ export default function Home({ onNavigate }) {
         </div>
         <ProgressBar percent={(flashcardsReviewedToday / flashcardsCount) * 100} />
       </button>
-
-      <section>
-        <div className={styles.categoriesHeader}>
-          <h3>Categorías</h3>
-          <button className={styles.seeAll} onClick={() => onNavigate('temario')}>
-            Ver todo
-          </button>
-        </div>
-        <div className={styles.categoriesGrid}>
-          {categories.slice(0, 4).map((c) => (
-            <button className={styles.categoryCard} key={c.id} onClick={() => onNavigate('category', c.id)}>
-              <div className={styles.categoryTop}>
-                <span className={styles.categoryBadge}>{c.short}</span>
-                <span className={styles.categoryPercent}>{c.percent}%</span>
-              </div>
-              <p className={styles.categoryLabel}>{c.label}</p>
-              <ProgressBar percent={c.percent} />
-            </button>
-          ))}
-        </div>
-      </section>
     </main>
   )
 }

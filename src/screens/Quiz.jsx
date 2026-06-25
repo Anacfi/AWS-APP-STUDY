@@ -75,6 +75,7 @@ export default function Quiz({ onBack }) {
         ))}
       </div>
 
+      {current.category && <span className={styles.topicBadge}>{current.category}</span>}
       <p className={styles.questionText}>{current.question}</p>
 
       <div className={styles.options}>

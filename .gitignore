@@ -18,6 +18,10 @@ dist-ssr
 # Design mockups (heavy reference files, kept local only)
 design/
 
+# Notas/PDFs de estudio personales (kept local only)
+content/*
+!content/README.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
